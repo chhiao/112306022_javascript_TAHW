@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <script>
+        function add(num1, num2) {
+            return num1 + num2;
+        }
+
+        function subtract(num1, num2) {
+            return num1 - num2;
+        }
+
+        function multiply(num1, num2) {
+            return num1 * num2;
+        }
+
+        function divide(num1, num2) {
+            if (num2 !== 0) {
+                return num1 / num2;
+            } else {
+                return "Cannot divide by zero";
+            }
+        }
+
+        while (true) {
+            let num1;
+            do {
+                num1 = parseFloat(prompt("Enter the first number:"));
+                if (isNaN(num1)) {
+                    alert("Please enter a valid number");
+                }
+            } while (isNaN(num1));
+
+            let num2;
+            do {
+                num2 = parseFloat(prompt("Enter the second number:"));
+                if (isNaN(num2)) {
+                    alert("Please enter a valid number");
+                }
+            } while (isNaN(num2));
+
+            let operation;
+            do {
+                operation = prompt("Choose an operation (+, -, *, /):");
+                if (!['+', '-', '*', '/'].includes(operation)) {
+                    alert("Please enter a valid operation");
+                }
+            } while (!['+', '-', '*', '/'].includes(operation));
+
+            var result;
+            switch (operation) {
+                case '+':
+                    result = add(num1, num2);
+                    break;
+                case '-':
+                    result = subtract(num1, num2);
+                    break;
+                case '*':
+                    result = multiply(num1, num2);
+                    break;
+                case '/':
+                    result = divide(num1, num2);
+                    break;
+                default:
+                    result = "Invalid operation";
+            }
+
+            alert("Result: " + result);
+
+            let input = prompt("Do you want to perform another calculation? (yes/no)");
+            if (input.toLowerCase() !== 'yes') {
+                break;
+            }
+        }
+    </script>
+</body>
+</html>
